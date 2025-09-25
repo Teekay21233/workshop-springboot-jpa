@@ -7,9 +7,8 @@ import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "tb_order")
@@ -89,6 +88,16 @@ public class Order implements Serializable {
 
     public Set<OrderItem> getItems(){
         return items;
+    }
+
+    public double getTotal(){
+        Double total = 0.0;
+
+        for (OrderItem x : items){
+            total += x.getSubTotal();
+        }
+
+        return total;
     }
 
     @Override
