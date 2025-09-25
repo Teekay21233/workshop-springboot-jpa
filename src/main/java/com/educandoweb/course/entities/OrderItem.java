@@ -24,6 +24,8 @@ public class OrderItem implements Serializable {
     private Integer quantity;
     private Double price;
 
+    private Payment payment;
+
     public OrderItem(){}
 
     public OrderItem(Order order, Product product, Integer quantity, Double price) {
